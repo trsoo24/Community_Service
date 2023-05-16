@@ -4,7 +4,6 @@ import com.community.community.config.jwt.JwtTokenProvider;
 import com.community.community.data.domain.User;
 import com.community.community.data.domain.UserDto;
 import com.community.community.exception.CustomException;
-import com.community.community.exception.ErrorMessage;
 import com.community.community.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

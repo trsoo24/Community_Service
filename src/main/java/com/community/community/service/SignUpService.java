@@ -27,8 +27,10 @@ public class SignUpService {
             throw new CustomException(FILL_PASSWORD_BLANK);
         }
 
-        User user = userRepository.save(userDto.toEntity());
-        user.encodePassword(passwordEncoder);
+        User user = userRepository.save(User.builder()
+                        .email(userDto.getEmail())
+                        .password(passwordEncoder.encode(userDto.getPassword()))
+                        .build());
 
         return user;
     }

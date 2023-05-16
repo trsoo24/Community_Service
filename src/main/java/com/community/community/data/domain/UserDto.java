@@ -12,11 +12,4 @@ import javax.persistence.Column;
 public class UserDto {
     private String email;
     private String password;
-
-    public User toEntity() {
-        return User.builder()
-                .email(email)
-                .password(password)
-                .build();
-    }
 }
