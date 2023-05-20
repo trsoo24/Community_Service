@@ -2,7 +2,7 @@ package com.community.community.service;
 
 import com.community.community.config.jwt.JwtTokenProvider;
 import com.community.community.data.domain.User;
-import com.community.community.data.domain.UserDto;
+import com.community.community.data.domain.SignInDto;
 import com.community.community.exception.CustomException;
 import com.community.community.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class SignInService {
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
-    public String signIn (UserDto userDto) {
+    public String signIn (SignInDto userDto) {
         User user = userRepository.findByEmail(userDto.getEmail())
                 .orElseThrow(() -> new CustomException(USER_NOT_FOUND));
 
@@ -27,6 +27,9 @@ public class SignInService {
             throw new CustomException(WRONG_PASSWORD);
         }
 
-        return jwtTokenProvider.createToken(userDto.getEmail());
+        String token = jwtTokenProvider.createToken(userDto.getEmail());
+        user.setToken(token);
+        userRepository.save(user);
+        return token;
     }
 }
