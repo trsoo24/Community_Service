@@ -20,7 +20,7 @@ public class Board extends TimeEntity {
     @Column(nullable = false)
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 }

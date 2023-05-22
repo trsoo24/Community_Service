@@ -7,8 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BoardDto {
-    private String nickName;
+public class CreateBoardDto {
+    private Long userId;
     private String title;
     private String text;
 }

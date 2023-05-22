@@ -2,17 +2,18 @@ package com.community.community.service;
 
 import com.community.community.data.domain.SignUpDto;
 import com.community.community.data.domain.User;
-import com.community.community.data.domain.SignInDto;
-import com.community.community.exception.CustomException;
+import com.community.community.exception.WrongApproachException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.community.community.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.community.community.exception.ErrorMessage.*;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class SignUpService {
 
     private final UserRepository userRepository;
@@ -21,13 +22,13 @@ public class SignUpService {
     public User signUp(SignUpDto userDto) {
         String email = userDto.getEmail();
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new CustomException(ALREADY_REGISTERED);
+            throw new WrongApproachException(ALREADY_REGISTERED);
         } else if (email == null) {
-            throw new CustomException(FILL_EMAIL_BLANK);
+            throw new WrongApproachException(FILL_EMAIL_BLANK);
         } else if (userDto.getPassword() == null) {
-            throw new CustomException(FILL_PASSWORD_BLANK);
+            throw new WrongApproachException(FILL_PASSWORD_BLANK);
         } else if (userRepository.findByNickName(userDto.getNickName()).isPresent()) {
-            throw new CustomException(DUPLICATED_NICKNAME);
+            throw new WrongApproachException(DUPLICATED_NICKNAME);
         }
 
         User user = userRepository.save(User.builder()

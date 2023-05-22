@@ -1,7 +1,6 @@
 package com.community.community.data.domain;
 
 import com.community.community.data.board.Board;
-import com.community.community.data.board.BoardDto;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -28,6 +27,10 @@ public class User {
     private String nickName;
     private String token; // jwt 토큰
 
+    /** Todo
+     * 이 유저가 작성한 글들이 유저 정보 안에 기입되어야하는지?
+     * 한다면 따로 클래스를 빼서 작성해야하는지?
+     */
     @OneToMany(mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
 
