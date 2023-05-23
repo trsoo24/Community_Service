@@ -2,14 +2,13 @@ package com.community.community.data.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDto {
+public class SignUpDto {
     private String email;
+    private String nickName;
     private String password;
 }
