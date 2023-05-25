@@ -2,6 +2,7 @@ package com.community.community.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,7 +21,9 @@ public class SwaggerConfig {
     @Bean
     public Docket restApi() {
         return new Docket(DocumentationType.OAS_30)
-                .useDefaultResponseMessages(true)
+                .useDefaultResponseMessages(false)
+                .consumes(getConsumeContentTypes())
+                .produces(getProduceContentTypes())
                 .apiInfo(this.apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.community.community.controller"))

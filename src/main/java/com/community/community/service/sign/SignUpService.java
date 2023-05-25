@@ -1,7 +1,7 @@
-package com.community.community.service;
+package com.community.community.service.sign;
 
-import com.community.community.data.domain.SignUpDto;
-import com.community.community.data.domain.User;
+import com.community.community.data.user.dto.SignUpDto;
+import com.community.community.data.user.model.User;
 import com.community.community.exception.WrongApproachException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

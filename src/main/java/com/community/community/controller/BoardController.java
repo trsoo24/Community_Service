@@ -1,14 +1,17 @@
 package com.community.community.controller;
 
-import com.community.community.data.board.Board;
-import com.community.community.data.board.CreateBoardDto;
-import com.community.community.data.board.ModifyBoardDto;
+import com.community.community.data.board.model.Board;
+import com.community.community.data.board.dto.CreateBoardDto;
+import com.community.community.data.board.dto.DeleteBoardDto;
+import com.community.community.data.board.dto.ModifyBoardDto;
 import com.community.community.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,8 +24,18 @@ public class BoardController {
         return ResponseEntity.ok(boardService.createPost(boardDto));
     }
 
-    @PostMapping("/modify")
+    @PutMapping("/modify")
     public ResponseEntity<Board> modifyPost(@RequestBody @Valid ModifyBoardDto boardDto) {
         return ResponseEntity.ok(boardService.modifyPost(boardDto));
+    }
+
+    @PostMapping("/delete")
+    public String deletePost(@RequestBody @Valid DeleteBoardDto boardDto) {
+        boardService.deletePost(boardDto);
+        LocalDateTime date = LocalDateTime.now();
+        date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+
+        return "게시물이 삭제되었습니다. " + date;
     }
 }

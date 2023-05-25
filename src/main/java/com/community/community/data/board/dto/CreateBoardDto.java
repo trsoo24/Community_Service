@@ -1,4 +1,4 @@
-package com.community.community.data.board;
+package com.community.community.data.board.dto;
 
 import lombok.*;
 
@@ -7,8 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ModifyBoardDto {
-    private Long boardId;
+public class CreateBoardDto {
     private Long userId;
     private String title;
     private String text;
