@@ -41,6 +41,7 @@ public class User {
         board.setUser(this);
     }
 
+
     public void encodePassword(PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(password);
     }

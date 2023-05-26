@@ -1,18 +1,15 @@
-package com.community.community.service;
+package com.community.community.service.board;
 
 import com.community.community.data.board.model.Board;
 import com.community.community.data.board.dto.ViewBoardDto;
-import com.community.community.data.user.model.User;
 import com.community.community.exception.WrongApproachException;
 import com.community.community.repository.BoardRepository;
-import com.community.community.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 import static com.community.community.exception.ErrorMessage.NOT_EXIST_POST;
 
@@ -21,7 +18,14 @@ import static com.community.community.exception.ErrorMessage.NOT_EXIST_POST;
 @Transactional
 public class ViewBoardService {
     private final BoardRepository boardRepository;
-    private final UserRepository userRepository;
+
+    /**
+     * 게시글 목록 조회
+     *     - 로그인하지 않은 유저도 게시글 목록 및 게시글 조회 가능 ( 로그인 필요 X )
+     *     - 등록되어있는 글들을 최신순 ( 기본 )으로 조회하는 기능
+     *     - 필요에 따라 댓글 많은 순, 댓글 적은 순으로 정렬 기능
+     *     - 페이징을 통해 20개씩 조회가 가능하도록 구현
+     */
 
     public Page<ViewBoardDto> ViewAllBoard(Pageable pageable) {
         Page<Board> page = boardRepository.findAll(pageable);
@@ -51,8 +55,7 @@ public class ViewBoardService {
     }
 
     public Page<ViewBoardDto> searchNickName(String nickName, Pageable pageable) {
-        Optional<User> user = userRepository.findByNickName(nickName);
-        Page<Board> page = boardRepository.findAllByUserContaining(user.get().getNickName(), pageable);
+        Page<Board> page = boardRepository.findAllByWriterContaining(nickName, pageable);
         if (page == null) {
             throw new WrongApproachException(NOT_EXIST_POST);
         }

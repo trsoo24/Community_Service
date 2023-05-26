@@ -1,4 +1,4 @@
-package com.community.community.data.board.model;
+package com.community.community.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

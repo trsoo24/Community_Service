@@ -2,14 +2,15 @@ package com.community.community.controller;
 
 import com.community.community.data.board.dto.ViewBoardDto;
 import com.community.community.data.board.model.Board;
-import com.community.community.service.ViewBoardService;
+import com.community.community.service.board.ViewBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @RequiredArgsConstructor
@@ -24,18 +25,17 @@ public class ViewController {
     }
 
     @GetMapping("/title")
-    public ResponseEntity<Page<ViewBoardDto>> searchTitleBoard(String text, Pageable pageable) {
-        return ResponseEntity.ok(viewBoardService.searchTitle(text, pageable));
+    public ResponseEntity<Page<ViewBoardDto>> searchTitleBoard(@Param("title") @Valid String title, Pageable pageable) {
+        return ResponseEntity.ok(viewBoardService.searchTitle(title, pageable));
     }
 
     @GetMapping("/nickname")
-    public ResponseEntity<Page<ViewBoardDto>> searchNickNameBoard(String text, Pageable pageable) {
-        return ResponseEntity.ok(viewBoardService.searchNickName(text, pageable));
+    public ResponseEntity<Page<ViewBoardDto>> searchNickNameBoard(@Param("nickName") @Valid String nickName, Pageable pageable) {
+        return ResponseEntity.ok(viewBoardService.searchNickName(nickName, pageable));
     }
 
     @GetMapping("/detail")
-    public ResponseEntity<Board> viewDetailPost(Long boardId) {
+    public ResponseEntity<Board> viewDetailPost(@Param("boardId") @Valid Long boardId) {
         return ResponseEntity.ok(viewBoardService.viewDetail(boardId));
     }
-
 }

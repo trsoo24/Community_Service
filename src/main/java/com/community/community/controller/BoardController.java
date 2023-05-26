@@ -4,7 +4,7 @@ import com.community.community.data.board.model.Board;
 import com.community.community.data.board.dto.CreateBoardDto;
 import com.community.community.data.board.dto.DeleteBoardDto;
 import com.community.community.data.board.dto.ModifyBoardDto;
-import com.community.community.service.BoardService;
+import com.community.community.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
