@@ -20,6 +20,9 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     void updateView(@Param("boardId") Long boardId);
     // @Query 사용 시 @Param 으로 변수명 입력할 것
 
+    @Query("SELECT b FROM Board b ORDER BY b.boardId DESC")
+    Page<Board> findAllDesc(Pageable pageable);
+
     Page<Board> findAllByTitleContaining(String word, Pageable pageable);
     Page<Board> findAllByWriterContaining(String writer, Pageable pageable);
 }

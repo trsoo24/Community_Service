@@ -3,7 +3,6 @@ package com.community.community.data.board.model;
 import com.community.community.data.TimeEntity;
 import com.community.community.data.comment.model.Comment;
 import com.community.community.data.user.model.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;

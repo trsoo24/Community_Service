@@ -18,7 +18,11 @@ public enum ErrorMessage {
     WRONG_PASSWORD(HttpStatus.BAD_REQUEST, "비밀번호를 확인해주세요."),
     // 게시판 글 작성 / 수정
     INVALID_USER(HttpStatus.BAD_REQUEST, "유효하지 않은 회원입니다."),
-    NOT_EXIST_POST(HttpStatus.BAD_REQUEST, "존재하지 않는 글입니다.")
+    NOT_EXIST_POST(HttpStatus.BAD_REQUEST, "존재하지 않는 글입니다."),
+    ALREADY_DELETED_POST(HttpStatus.BAD_REQUEST, "이미 삭제된 글입니다."),
+    // 댓글 수정 / 삭제
+    NOT_EXIST_COMMENT(HttpStatus.BAD_REQUEST, "존재하지 않는 댓글입니다."),
+    ALREADY_DELETED_COMMENT(HttpStatus.BAD_REQUEST, "이미 삭제된 댓글입니다.")
 
 
     ;
