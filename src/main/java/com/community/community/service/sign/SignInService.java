@@ -1,8 +1,8 @@
-package com.community.community.service;
+package com.community.community.service.sign;
 
 import com.community.community.config.jwt.JwtTokenProvider;
-import com.community.community.data.domain.User;
-import com.community.community.data.domain.SignInDto;
+import com.community.community.data.user.model.User;
+import com.community.community.data.user.dto.SignInDto;
 import com.community.community.exception.WrongApproachException;
 import com.community.community.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

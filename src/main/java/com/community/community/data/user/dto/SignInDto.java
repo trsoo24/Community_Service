@@ -1,4 +1,4 @@
-package com.community.community.data.domain;
+package com.community.community.data.user.dto;
 
 import lombok.*;
 

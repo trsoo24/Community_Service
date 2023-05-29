@@ -1,6 +1,7 @@
-package com.community.community.data.domain;
+package com.community.community.data.user.model;
 
-import com.community.community.data.board.Board;
+import com.community.community.data.board.model.Board;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -31,7 +32,8 @@ public class User {
      * 이 유저가 작성한 글들이 유저 정보 안에 기입되어야하는지?
      * 한다면 따로 클래스를 빼서 작성해야하는지?
      */
-    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Board> boardList = new ArrayList<>();
 
     public void addBoard(Board board) {

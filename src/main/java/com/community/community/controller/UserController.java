@@ -1,10 +1,10 @@
 package com.community.community.controller;
 
-import com.community.community.data.domain.SignInDto;
-import com.community.community.data.domain.SignUpDto;
-import com.community.community.data.domain.User;
-import com.community.community.service.SignInService;
-import com.community.community.service.SignUpService;
+import com.community.community.data.user.dto.SignInDto;
+import com.community.community.data.user.dto.SignUpDto;
+import com.community.community.data.user.model.User;
+import com.community.community.service.sign.SignInService;
+import com.community.community.service.sign.SignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
