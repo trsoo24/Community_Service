@@ -1,4 +1,4 @@
-package com.community.community.service;
+package com.community.community.service.board;
 
 import com.community.community.data.board.dto.CreateBoardDto;
 import com.community.community.data.board.dto.DeleteBoardDto;
@@ -30,11 +30,14 @@ public class BoardService {
                 .orElseThrow(() -> new WrongApproachException(INVALID_USER));
 
 
-        return boardRepository.save(Board.builder()
+        Board board = boardRepository.save(Board.builder()
                                         .title(boardDto.getTitle())
                                         .text(boardDto.getText())
+                                        .writer(user.getNickName())
                                         .user(user)
                                         .build());
+        user.addBoard(board);
+        return board;
     }
 
     public Board modifyPost(ModifyBoardDto boardDto) {
