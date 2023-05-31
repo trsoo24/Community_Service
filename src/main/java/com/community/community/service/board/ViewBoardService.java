@@ -27,8 +27,8 @@ public class ViewBoardService {
      *     - 페이징을 통해 20개씩 조회가 가능하도록 구현
      */
 
-    public Page<ViewBoardDto> ViewAllBoard(Pageable pageable) {
-        Page<Board> page = boardRepository.findAll(pageable);
+    public Page<ViewBoardDto> ViewAllBoard(Pageable pageable) { // 최신순
+        Page<Board> page = boardRepository.findAllDesc(pageable);
         return page.map(ViewBoardDto::from);
     }
 

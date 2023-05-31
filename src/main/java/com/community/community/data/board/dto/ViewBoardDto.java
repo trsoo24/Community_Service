@@ -15,6 +15,8 @@ public class ViewBoardDto {
     private String title;
     private String nickName;
     private LocalDateTime wroteAt;
+    private int viewCount;
+
 
     public static ViewBoardDto from(Board board) {
         return ViewBoardDto.builder()
@@ -22,6 +24,7 @@ public class ViewBoardDto {
                 .title(board.getTitle())
                 .nickName(board.getUser().getNickName())
                 .wroteAt(board.getModifiedAt())
+                .viewCount(board.getViewCount())
                 .build();
     }
 }

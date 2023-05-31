@@ -29,7 +29,7 @@ public class BoardController {
         return ResponseEntity.ok(boardService.modifyPost(boardDto));
     }
 
-    @PostMapping("/delete")
+    @PutMapping("/delete")
     public String deletePost(@RequestBody @Valid DeleteBoardDto boardDto) {
         boardService.deletePost(boardDto);
         LocalDateTime date = LocalDateTime.now();
