@@ -28,10 +28,6 @@ public class User {
     private String nickName;
     private String token; // jwt 토큰
 
-    /** Todo
-     * 이 유저가 작성한 글들이 유저 정보 안에 기입되어야하는지?
-     * 한다면 따로 클래스를 빼서 작성해야하는지?
-     */
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Board> boardList = new ArrayList<>();

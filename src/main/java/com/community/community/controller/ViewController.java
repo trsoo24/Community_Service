@@ -21,7 +21,7 @@ public class ViewController {
 
     @GetMapping("/all")
     public ResponseEntity<Page<ViewBoardDto>> viewAllBoard(Pageable pageable) {
-        return ResponseEntity.ok(viewBoardService.ViewAllBoard(pageable));
+        return ResponseEntity.ok(viewBoardService.viewAllBoard(pageable));
     }
 
     @GetMapping("/title")
