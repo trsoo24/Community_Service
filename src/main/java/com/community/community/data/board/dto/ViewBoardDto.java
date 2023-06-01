@@ -14,7 +14,7 @@ public class ViewBoardDto {
     private Long boardId;
     private String title;
     private String nickName;
-    private LocalDateTime wroteAt;
+    private LocalDateTime createdAt;
     private int viewCount;
 
 
@@ -23,7 +23,7 @@ public class ViewBoardDto {
                 .boardId(board.getBoardId())
                 .title(board.getTitle())
                 .nickName(board.getUser().getNickName())
-                .wroteAt(board.getModifiedAt())
+                .createdAt(board.getModifiedAt())
                 .viewCount(board.getViewCount())
                 .build();
     }

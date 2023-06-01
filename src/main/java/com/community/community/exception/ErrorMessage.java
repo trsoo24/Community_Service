@@ -23,9 +23,8 @@ public enum ErrorMessage {
     // 댓글 수정 / 삭제
     NOT_EXIST_COMMENT(HttpStatus.BAD_REQUEST, "존재하지 않는 댓글입니다."),
     ALREADY_DELETED_COMMENT(HttpStatus.BAD_REQUEST, "이미 삭제된 댓글입니다.")
-
-
     ;
+
     private final HttpStatus httpStatus;
     private final String message;
 }

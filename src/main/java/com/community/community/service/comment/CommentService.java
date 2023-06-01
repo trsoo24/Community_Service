@@ -49,10 +49,6 @@ public class CommentService {
                 .orElseThrow(() -> new WrongApproachException(NOT_EXIST_COMMENT));
 
         comment.setComment(commentDto.getComment());
-        /**
-         * Question ?
-         * 댓글 내용만 수정해주면 Board 내의 List<Comment> 내의 동일 commentId 도 내용이 바뀔까 ?
-         */
 
         return comment;
     }
